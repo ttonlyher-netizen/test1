@@ -535,10 +535,10 @@ svg {
   right: 7.5%;
   top: 215px;
   width: 338px;
-  padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.82);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: 28px;
-  background: rgba(255, 253, 249, 0.9);
+  background: #fff;
   box-shadow: 0 28px 65px rgba(44, 38, 31, 0.16);
   backdrop-filter: blur(16px);
   transform: rotate(2deg);
@@ -547,8 +547,19 @@ svg {
 .bot-preview-head {
   display: flex;
   align-items: center;
-  gap: 11px;
-  padding: 3px 2px 12px;
+  gap: 10px;
+  min-height: 66px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 1px 0 rgba(25, 47, 61, 0.08);
+}
+
+.telegram-back {
+  color: #3390ec;
+  font-family: Arial, sans-serif;
+  font-size: 29px;
+  font-weight: 300;
+  line-height: 1;
 }
 
 .bot-avatar {
@@ -556,93 +567,152 @@ svg {
   width: 42px;
   height: 42px;
   place-items: center;
-  border-radius: 14px;
-  background: #211f1d;
+  border-radius: 50%;
+  color: #fff;
+  background: linear-gradient(145deg, #48a9f8, #2586d6);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
-.bot-preview-head > div:nth-child(2) {
+.bot-avatar strong {
+  font-size: 11px;
+  font-style: italic;
+  letter-spacing: -0.04em;
+}
+
+.bot-preview-title {
   display: flex;
   flex: 1;
   flex-direction: column;
 }
 
-.bot-preview-head strong {
+.bot-preview-title > strong {
   font-size: 14px;
 }
 
-.bot-preview-head small {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  color: var(--muted);
+.bot-preview-title small {
+  color: #7d8b96;
   font-size: 10px;
 }
 
-.bot-preview-head small span {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #55bb7e;
+.bot-actions {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: #3390ec;
+}
+
+.bot-actions svg {
+  width: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-width: 1.8;
 }
 
 .bot-dots {
-  color: #aaa6a0;
+  color: #3390ec;
+  font-size: 10px;
   letter-spacing: 2px;
 }
 
+.bot-preview-chat {
+  position: relative;
+  padding: 12px 11px 10px;
+  background-color: #dcebf2;
+  background-image:
+    radial-gradient(circle at 17px 19px, rgba(62, 117, 143, 0.08) 0 2px, transparent 2.5px),
+    radial-gradient(circle at 42px 38px, transparent 0 7px, rgba(62, 117, 143, 0.055) 7.5px 8.5px, transparent 9px),
+    linear-gradient(35deg, transparent 45%, rgba(62, 117, 143, 0.035) 46% 49%, transparent 50%);
+  background-size: 58px 58px, 72px 72px, 45px 45px;
+}
+
+.telegram-date {
+  width: max-content;
+  margin: 0 auto 8px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(75, 108, 125, 0.56);
+  font-size: 8px;
+  font-weight: 700;
+}
+
 .chat-message {
-  width: 82%;
-  padding: 13px 15px 10px;
-  border-radius: 8px 18px 18px 18px;
-  background: #eeebe5;
+  position: relative;
+  width: 84%;
+  padding: 12px 13px 9px;
+  border-radius: 15px 15px 15px 5px;
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(45, 72, 86, 0.1);
   font-size: 12px;
+}
+
+.chat-message::before {
+  position: absolute;
+  bottom: 0;
+  left: -5px;
+  width: 10px;
+  height: 11px;
+  background: #fff;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  content: "";
 }
 
 .chat-message time {
   display: block;
   margin-top: 4px;
-  color: #aaa49d;
+  color: #94a0a7;
   font-size: 8px;
   text-align: right;
 }
 
 .chat-options {
   display: grid;
-  gap: 6px;
+  overflow: hidden;
   margin-top: 9px;
+  border-radius: 11px;
+  box-shadow: 0 1px 2px rgba(45, 72, 86, 0.12);
 }
 
 .chat-options span {
   padding: 9px 12px;
-  border: 1px solid rgba(255, 104, 70, 0.28);
-  border-radius: 12px;
-  color: var(--accent-deep);
-  background: #fff8f5;
+  border-bottom: 1px solid rgba(51, 144, 236, 0.12);
+  color: #168acd;
+  background: rgba(255, 255, 255, 0.94);
   font-size: 10px;
   font-weight: 700;
   text-align: center;
 }
 
+.chat-options span:last-child {
+  border-bottom: 0;
+}
+
 .bot-preview-foot {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 9px;
   margin-top: 10px;
-  padding: 8px 8px 8px 13px;
-  border: 1px solid var(--line);
+  padding: 8px 11px;
   border-radius: 999px;
-  color: #aaa6a0;
+  color: #82919a;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 1px 2px rgba(45, 72, 86, 0.12);
   font-size: 10px;
 }
 
-.send-icon {
-  display: grid;
-  width: 27px;
-  height: 27px;
-  place-items: center;
-  border-radius: 50%;
-  color: #fff;
-  background: var(--accent);
+.bot-preview-foot > span {
+  flex: 1;
+}
+
+.attach-icon,
+.voice-icon {
+  width: 17px;
+  fill: none;
+  stroke: #758895;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
 }
 
 .hero-note {
@@ -1193,20 +1263,24 @@ svg {
   overflow: hidden;
   border-radius: 43px;
   color: #18191b;
-  background: #eae7e1;
+  background: #dcebf2;
 }
 
 .phone-chat-head {
+  position: relative;
+  z-index: 3;
   display: flex;
   align-items: center;
   gap: 9px;
   height: 77px;
   padding: 17px 16px 8px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 1px 0 rgba(25, 47, 61, 0.1);
 }
 
-.phone-chat-head > div:nth-child(3) {
+.phone-title {
   display: flex;
+  flex: 1;
   flex-direction: column;
 }
 
@@ -1220,7 +1294,7 @@ svg {
 }
 
 .phone-back {
-  color: var(--accent-deep);
+  color: #3390ec;
   font-size: 26px;
 }
 
@@ -1231,9 +1305,29 @@ svg {
   place-items: center;
   border-radius: 50%;
   color: #fff;
-  background: var(--ink);
+  background: linear-gradient(145deg, #48a9f8, #2586d6);
   font-size: 10px;
   font-weight: 800;
+}
+
+.phone-head-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #3390ec;
+  font-size: 10px;
+}
+
+.phone-chat-body {
+  position: absolute;
+  inset: 77px 0 0;
+  padding-top: 1px;
+  background-color: #dcebf2;
+  background-image:
+    radial-gradient(circle at 14px 18px, rgba(62, 117, 143, 0.08) 0 1.5px, transparent 2px),
+    radial-gradient(circle at 38px 35px, transparent 0 6px, rgba(62, 117, 143, 0.055) 6.5px 7.5px, transparent 8px),
+    linear-gradient(35deg, transparent 45%, rgba(62, 117, 143, 0.035) 46% 49%, transparent 50%);
+  background-size: 52px 52px, 66px 66px, 42px 42px;
 }
 
 .phone-date {
@@ -1242,17 +1336,30 @@ svg {
   padding: 4px 9px;
   border-radius: 999px;
   color: #fff;
-  background: rgba(55, 57, 60, 0.45);
+  background: rgba(75, 108, 125, 0.56);
   font-size: 7px;
 }
 
 .phone-bubble {
+  position: relative;
   width: 74%;
   margin: 0 12px;
   padding: 10px 11px 8px;
   border-radius: 5px 14px 14px 14px;
   background: #fff;
+  box-shadow: 0 1px 1px rgba(45, 72, 86, 0.1);
   font-size: 9px;
+}
+
+.phone-bubble::before {
+  position: absolute;
+  bottom: 0;
+  left: -4px;
+  width: 8px;
+  height: 9px;
+  background: #fff;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  content: "";
 }
 
 .phone-bubble small {
@@ -1265,33 +1372,42 @@ svg {
 
 .phone-options {
   display: grid;
-  gap: 5px;
+  overflow: hidden;
   margin: 8px 12px 15px;
+  border-radius: 9px;
+  box-shadow: 0 1px 2px rgba(45, 72, 86, 0.12);
 }
 
 .phone-options span {
   padding: 8px;
-  border-radius: 8px;
-  color: #fff;
-  background: var(--accent);
+  border-bottom: 1px solid rgba(51, 144, 236, 0.12);
+  color: #168acd;
+  background: rgba(255, 255, 255, 0.96);
   font-size: 8px;
   font-weight: 700;
   text-align: center;
 }
 
+.phone-options span:last-child {
+  border-bottom: 0;
+}
+
 .phone-result {
+  width: 82%;
   margin: 12px;
   overflow: hidden;
-  border-radius: 14px;
+  border-radius: 5px 14px 14px 14px;
   background: #fff;
-  box-shadow: 0 10px 25px rgba(66, 60, 53, 0.12);
+  box-shadow: 0 1px 2px rgba(45, 72, 86, 0.14);
 }
 
 .result-image {
   position: relative;
-  height: 135px;
+  height: 116px;
   overflow: hidden;
-  background: linear-gradient(145deg, #ded8cf, #faf7f1);
+  background:
+    linear-gradient(155deg, rgba(31, 62, 78, 0.07), transparent 52%),
+    linear-gradient(145deg, #d8d2ca, #f8f6f1);
 }
 
 .result-image > span {
@@ -1302,7 +1418,7 @@ svg {
   padding: 5px 7px;
   border-radius: 999px;
   color: #fff;
-  background: var(--accent);
+  background: #3390ec;
   font-size: 6px;
   font-weight: 800;
 }
@@ -1340,8 +1456,8 @@ svg {
   bottom: 30px;
   width: 28px;
   height: 43px;
-  border-color: var(--accent);
-  background: var(--accent-soft);
+  border-color: #3390ec;
+  background: #cfe8fb;
 }
 
 .result-copy {
@@ -1360,6 +1476,21 @@ svg {
   font-size: 7px;
 }
 
+.result-copy small {
+  margin-top: 5px;
+  color: #9a9b98;
+  font-size: 6px;
+}
+
+.result-action {
+  padding: 8px 10px;
+  border-top: 1px solid rgba(51, 144, 236, 0.13);
+  color: #168acd;
+  font-size: 7px;
+  font-weight: 800;
+  text-align: center;
+}
+
 .phone-input {
   position: absolute;
   right: 8px;
@@ -1367,22 +1498,39 @@ svg {
   left: 8px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 6px 6px 6px 12px;
+  gap: 8px;
+  padding: 6px 8px;
   border-radius: 999px;
-  color: #a6a29d;
-  background: #fff;
+  color: #8798a2;
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 1px 2px rgba(45, 72, 86, 0.14);
   font-size: 8px;
+}
+
+.phone-input > span:nth-child(2) {
+  flex: 1;
+}
+
+.phone-attach {
+  color: #748b98;
+  font-size: 14px;
+  transform: rotate(-45deg);
+}
+
+.phone-smile {
+  font-size: 12px;
 }
 
 .phone-input b {
   display: grid;
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   place-items: center;
   border-radius: 50%;
-  color: #fff;
-  background: var(--accent);
+  color: #3390ec;
+  background: #3390ec;
+  font-size: 7px;
+  box-shadow: inset 0 0 0 8px #fff;
 }
 
 .principles {
